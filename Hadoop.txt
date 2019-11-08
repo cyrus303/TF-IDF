@@ -1,0 +1,28 @@
+
+hadoop fs -mkdir /input --Creating Directory
+
+hadoop fs -put 1QueryResults.csv 2QueryResults.csv 3QueryResults.csv 4QueryResults.csv 5QueryResults.csv /input -- Uploading data to HDFS
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -input /home/sachinsunny303/000000_0.txt -output /home/sachinsunny303/output1 -mapper /home/sachinsunny303/mapper1.py -reducer /home/sachinsunny303/reducer1.py
+
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -file /home/sachinsunny303/mapper1.py -mapper /home/sachinsunny303/mapper1.py -file /home/sachinsunny303/reducer1.py -reducer /home/sachinsunny303/reducer1.py -input /home/sachinsunny303/000000_0.txt -output /home/sachinsunny303/output3
+
+
+/home/sachinsunny303/000000_0.txt -output /home/sachinsunny303/output1
+
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -file /home/sachinsunny303/mapper1.py -mapper /home/sachinsunny303/mapper1.py -file /home/sachinsunny303/reducer1.py -reducer /home/sachinsunny303/reducer1.py -input /home/sachinsunny303/tf -output /home/sachinsunny303/1out
+
+
+folder name -- input 1 --
+input parts -- /home/sachinsunny303/tf
+
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -file /home/sachinsunny303/mapper2.py -mapper /home/sachinsunny303/mapper2.py -file /home/sachinsunny303/reducer2.py -reducer /home/sachinsunny303/reducer2.py -input /home/sachinsunny303/1out -output /home/sachinsunny303/2out
+
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -file /home/sachinsunny303/mapper3.py -mapper /home/sachinsunny303/mapper3.py -file /home/sachinsunny303/reducer3.py -reducer /home/sachinsunny303/reducer3.py -input /home/sachinsunny303/2out -output /home/sachinsunny303/3out
+
+
+hadoop jar $HADOOP_HOME/home/sachinsunny303/hadoop-streaming-1.2.1.jar -file /home/sachinsunny303/mapper4.py -mapper /home/sachinsunny303/mapper3.py -input /home/sachinsunny303/2out -output /home/sachinsunny303/4out

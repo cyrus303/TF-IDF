@@ -1,0 +1,68 @@
+Hive
+
+create table data (Id int,PostTypeId int,AcceptedAnswerId int,ParentId int,CreationDate string,DeletionDate int,Score int,ViewCount int,Body string,OwnerUserId int,OwnerDisplayName string, LastEditorUserId int,LastEditorDisplayName string,LastEditDate string,LastActivityDate string,Title string,Tags string,AnswerCount int,CommentCount int,FavoriteCount int,ClosedDate string, CommunityOwnedDate string)ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+
+Creating a table with the same scheme
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+load data inpath '/output' into table data;
+
+loading the data from the output of 
+
+-------------------------------------------------------------------------------------
+Query
+
+1) SELECT Id,Score,ViewCount,Title,Tags FROM data SORT BY Score DESC LIMIT 10;
+
+2) SELECT OwnerUserId, SUM(Score) AS Sum_Of_Score, OwnerDisplayName 
+FROM data
+GROUP BY OwnerUserId,OwnerDisplayName 
+ORDER BY Sum_Of_Score DESC LIMIT 10;
+
+
+3) SELECT COUNT (DISTINCT OwnerUserId) 
+FROM data 
+WHERE lower (Body) like '%hadoop%' or lower (Title) like '%hadoop%' or lower(Tags) like '%hadoop%';
+
+
+4) INSERT OVERWRITE LOCAL DIRECTORY '/home/sachinsunny303/staging'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+select OwnerUserId,OwnerDisplayName,sum(Score) as a
+from data
+GROUP BY OwnerUserId,OwnerDisplayName
+ORDER BY a DESC LIMIT 10;
+
+sed 's/[~`!@#\;//$%^&*()?]//g' /home/naveen_gowda_rm/output/000000_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' > /home/naveen_gowda_rm/output/000000_0.csv
+
+sed command to clean quotes, tags, brackets and special characters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for key, value in sorted(tfidfBowA.items(), key=lambda item: item[1] , reverse=True)[:10]:   
+    print("%s: %s" % (key, value)) -- python code for generating top 10 words for each user
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sed 's/[~`!@#\;//$%^&{}*()?]//g' py/000000_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/[+=]//g' > /home/sachinsunny303/data/0
+
+sed 's/[~`!@#\;//$%^&{}*()?]//g' data/000001_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/[+=]//g' > /home/sachinsunny303/data/1
+
+sed 's/[~`!@#\;//$%^&{}*()?]//g' data/000002_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/[+=]//g' > /home/sachinsunny303/data/2
+
+sed 's/[~`!@#\;//$%^&{}*()?]//g' data/000003_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/[+=]//g' > /home/sachinsunny303/data/3
+
+sed 's/[~`!@#\;//$%^&{}*()?]//g' data/000004_0 | tr -d '"' | tr -d "'" | sed -e 's/<[^>]*>//g' | sed 's/\[//g' | sed 's/\]//g' | sed 's/[+=]//g' > /home/sachinsunny303/data/4
+
+sed command to clean quotes, tags, brackets and special characters
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/sachinsunny303/py'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+select OwnerUserId,Title,Body
+from data
+where (OwnerUserId = 87234 OR OwnerUserId = 89904 OR OwnerUserId =  6068 OR OwnerUserId =  4883 OR OwnerUserId =  95592 OR OwnerUserId =  9951 OR OwnerUserId =  179736 OR OwnerUserId =  63051 OR OwnerUserId =  49153 OR OwnerUserId =  39677)
+group by OwnerUserId,Title,Body;
+
+pulling data for top 10 users id, body and title using OwnerUserId

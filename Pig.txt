@@ -1,0 +1,84 @@
+csv1 = LOAD '/input/1QueryResults.csv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',','YES_MULTILINE','UNIX','SKIP_INPUT_HEADER') AS (Id:int,PostTypeId:int,AcceptedAnswerId:int,ParentId:int,CreationDate:chararray,DeletionDate:int,Score:int,ViewCount:int,Body:chararray,OwnerUserId:int,OwnerDisplayName:chararray,LastEditorUserId:int,LastEditorDisplayName:chararray,LastEditDate:chararray,LastActivityDate:chararray,Title:chararray,Tags:chararray,AnswerCount:int,CommentCount:int,FavoriteCount:int,ClosedDate:chararray,CommunityOwnedDate:chararray)
+
+csv1 = FOREACH csv1 GENERATE Id .. ViewCount, REPLACE(Body,'\\r','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\r','') as Title, REPLACE(Tags,'\\r','') as Tags, AnswerCount .. ;
+
+csv1 = FOREACH csv1 GENERATE Id .. ViewCount, REPLACE(Body,'\\t','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\t','') as Title, REPLACE(Tags,'\\t','') as Tags, AnswerCount .. ;
+
+csv1 = FOREACH csv1 GENERATE Id .. ViewCount, REPLACE(Body,'\\n','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\n','') as Title, REPLACE(Tags,'\\n','') as Tags, AnswerCount .. ;
+
+csv1 = FOREACH csv1 GENERATE Id .. ViewCount, REPLACE(Body,',',' ') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,',',' ') as Title, REPLACE(Tags,',',' ') as Tags, AnswerCount .. ;
+
+Loaidng data to csv1 and cleaning the data with replace command
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+csv2 = LOAD '/input/2QueryResults.csv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',','YES_MULTILINE','UNIX','SKIP_INPUT_HEADER') AS(Id:int,PostTypeId:int,AcceptedAnswerId:int,ParentId:int,CreationDate:chararray,DeletionDate:int,Score:int,ViewCount:int,Body:chararray,OwnerUserId:int,OwnerDisplayName:chararray, LastEditorUserId:int,LastEditorDisplayName:chararray,LastEditDate:chararray,LastActivityDate:chararray,Title:chararray,Tags:chararray,AnswerCount:int,CommentCount:int,FavoriteCount:int,ClosedDate:chararray, CommunityOwnedDate:chararray);
+
+csv2 = FOREACH csv2 GENERATE Id .. ViewCount, REPLACE(Body,'\\n','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\n','') as Title, REPLACE(Tags,'\\n','') as Tags, AnswerCount .. ;
+
+csv2 = FOREACH csv2 GENERATE Id .. ViewCount, REPLACE(Body,'\\t','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\t','') as Title, REPLACE(Tags,'\\t','') as Tags, AnswerCount .. ;
+
+csv2 = FOREACH csv2 GENERATE Id .. ViewCount, REPLACE(Body,'\\r','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\r','') as Title, REPLACE(Tags,'\\r','') as Tags, AnswerCount .. ;
+
+csv2 = FOREACH csv2 GENERATE Id .. ViewCount, REPLACE(Body,',','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,',','') as Title, REPLACE(Tags,',','') as Tags, AnswerCount .. ;
+
+Loaidng data to csv2 and cleaning the data with replace command
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+csv3 = LOAD '/input/3QueryResults.csv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',','YES_MULTILINE','UNIX','SKIP_INPUT_HEADER') AS(Id:int,PostTypeId:int,AcceptedAnswerId:int,ParentId:int,CreationDate:chararray,DeletionDate:int,Score:int,ViewCount:int,Body:chararray,OwnerUserId:int,OwnerDisplayName:chararray, LastEditorUserId:int,LastEditorDisplayName:chararray,LastEditDate:chararray,LastActivityDate:chararray,Title:chararray,Tags:chararray,AnswerCount:int,CommentCount:int,FavoriteCount:int,ClosedDate:chararray, CommunityOwnedDate:chararray);
+
+csv3 = FOREACH csv3 GENERATE Id .. ViewCount, REPLACE(Body,'\\n','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\n','') as Title, REPLACE(Tags,'\\n','') as Tags, AnswerCount .. ;
+
+csv3 = FOREACH csv3 GENERATE Id .. ViewCount, REPLACE(Body,'\\t','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\t','') as Title, REPLACE(Tags,'\\t','') as Tags, AnswerCount .. ;
+
+csv3 = FOREACH csv3 GENERATE Id .. ViewCount, REPLACE(Body,'\\r','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\r','') as Title, REPLACE(Tags,'\\r','') as Tags, AnswerCount .. ;
+
+csv3 = FOREACH csv3 GENERATE Id .. ViewCount, REPLACE(Body,',','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,',','') as Title, REPLACE(Tags,',','') as Tags, AnswerCount .. ;
+
+Loaidng data to csv3 and cleaning the data with replace command
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+csv4 = LOAD '/input/4QueryResults.csv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',','YES_MULTILINE','UNIX','SKIP_INPUT_HEADER') AS(Id:int,PostTypeId:int,AcceptedAnswerId:int,ParentId:int,CreationDate:chararray,DeletionDate:int,Score:int,ViewCount:int,Body:chararray,OwnerUserId:int,OwnerDisplayName:chararray, LastEditorUserId:int,LastEditorDisplayName:chararray,LastEditDate:chararray,LastActivityDate:chararray,Title:chararray,Tags:chararray,AnswerCount:int,CommentCount:int,FavoriteCount:int,ClosedDate:chararray, CommunityOwnedDate:chararray);
+
+csv4 = FOREACH csv4 GENERATE Id .. ViewCount, REPLACE(Body,'\\n','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\n','') as Title, REPLACE(Tags,'\\n','') as Tags, AnswerCount .. ;
+
+csv4 = FOREACH csv4 GENERATE Id .. ViewCount, REPLACE(Body,'\\t','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\t','') as Title, REPLACE(Tags,'\\t','') as Tags, AnswerCount .. ;
+
+csv4 = FOREACH csv4 GENERATE Id .. ViewCount, REPLACE(Body,'\\r','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\r','') as Title, REPLACE(Tags,'\\r','') as Tags, AnswerCount .. ;
+
+csv4 = FOREACH csv4 GENERATE Id .. ViewCount, REPLACE(Body,',','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,',','') as Title, REPLACE(Tags,',','') as Tags, AnswerCount .. ;
+
+Loaidng data to csv4 and cleaning the data with replace command
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+csv5 = LOAD '/input/5QueryResults.csv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',','YES_MULTILINE','UNIX','SKIP_INPUT_HEADER') AS(Id:int,PostTypeId:int,AcceptedAnswerId:int,ParentId:int,CreationDate:chararray,DeletionDate:int,Score:int,ViewCount:int,Body:chararray,OwnerUserId:int,OwnerDisplayName:chararray, LastEditorUserId:int,LastEditorDisplayName:chararray,LastEditDate:chararray,LastActivityDate:chararray,Title:chararray,Tags:chararray,AnswerCount:int,CommentCount:int,FavoriteCount:int,ClosedDate:chararray, CommunityOwnedDate:chararray);
+
+csv5 = FOREACH csv5 GENERATE Id .. ViewCount, REPLACE(Body,'\\n','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\n','') as Title, REPLACE(Tags,'\\n','') as Tags, AnswerCount .. ;
+
+csv5 = FOREACH csv5 GENERATE Id .. ViewCount, REPLACE(Body,'\\t','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\t','') as Title, REPLACE(Tags,'\\t','') as Tags, AnswerCount .. ;
+
+csv5 = FOREACH csv5 GENERATE Id .. ViewCount, REPLACE(Body,'\\r','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,'\\r','') as Title, REPLACE(Tags,'\\r','') as Tags, AnswerCount .. ;
+
+csv5 = FOREACH csv5 GENERATE Id .. ViewCount, REPLACE(Body,',','') as Body, OwnerUserId .. LastActivityDate, REPLACE(Title,',','') as Title, REPLACE(Tags,',','') as Tags, AnswerCount .. ;
+
+Loaidng data to csv5 and cleaning the data with replace command
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+csv = UNION csv1,csv2,csv3,csv4,csv5;
+
+Combing all the varaiables into one variable 'csv'
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Dump csv;
+
+Command to see the data in the console
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+STORE csv INTO '/output' USING org.apache.pig.piggybank.storage.CSVExcelStorage();
+
+storing the data into output directory
